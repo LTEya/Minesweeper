@@ -43,37 +43,37 @@ public void draw ()
 }
 public boolean isWon()
 {
-   for (int r=0;r<NUM_ROWS;r++)
-     for(int c=0;c<NUM_COLS;c++)
-       if (buttons[r][c].flagged==false) return false;
+  for (int r=0; r<NUM_ROWS; r++)
+    for (int c=0; c<NUM_COLS; c++)
+      if (buttons[r][c].flagged==false) return false;
   //your code here
   return true;
 }
 public void displayLosingMessage()
 {
-   for(int i=0;i<NUM_ROWS;i++)
-     for(int j=0;j<NUM_COLS;j++)
-       if (mines.contains(buttons[i][j])) buttons[i][j].clicked=true;
-    lost=true;
-    buttons[NUM_ROWS/2][NUM_COLS/2 - 5].setLabel("G"); 
-    buttons[NUM_ROWS/2][NUM_COLS/2 - 4].setLabel("A"); 
-    buttons[NUM_ROWS/2][NUM_COLS/2 - 3].setLabel("M"); 
-    buttons[NUM_ROWS/2][NUM_COLS/2 - 2].setLabel("E"); 
-    buttons[NUM_ROWS/2][NUM_COLS/2 + 1].setLabel("O"); 
-    buttons[NUM_ROWS/2][NUM_COLS/2 + 2].setLabel("V"); 
-    buttons[NUM_ROWS/2][NUM_COLS/2 + 3].setLabel("E");
-    buttons[NUM_ROWS/2][NUM_COLS/2 + 4].setLabel("R"); 
+  for (int i=0; i<NUM_ROWS; i++)
+    for (int j=0; j<NUM_COLS; j++)
+      if (mines.contains(buttons[i][j])) buttons[i][j].clicked=true;
+  lost=true;
+  buttons[NUM_ROWS/2][NUM_COLS/2 - 5].setLabel("G"); 
+  buttons[NUM_ROWS/2][NUM_COLS/2 - 4].setLabel("A"); 
+  buttons[NUM_ROWS/2][NUM_COLS/2 - 3].setLabel("M"); 
+  buttons[NUM_ROWS/2][NUM_COLS/2 - 2].setLabel("E"); 
+  buttons[NUM_ROWS/2][NUM_COLS/2 + 1].setLabel("O"); 
+  buttons[NUM_ROWS/2][NUM_COLS/2 + 2].setLabel("V"); 
+  buttons[NUM_ROWS/2][NUM_COLS/2 + 3].setLabel("E");
+  buttons[NUM_ROWS/2][NUM_COLS/2 + 4].setLabel("R"); 
   //your code here
 }
 public void displayWinningMessage()
 {
-   buttons[NUM_ROWS/2][NUM_COLS/2 - 5].setLabel("Y"); 
-   buttons[NUM_ROWS/2][NUM_COLS/2 - 4].setLabel("O"); 
-   buttons[NUM_ROWS/2][NUM_COLS/2 - 3].setLabel("U"); 
-   buttons[NUM_ROWS/2][NUM_COLS/2 - 1].setLabel("W"); 
-   buttons[NUM_ROWS/2][NUM_COLS/2].setLabel("I"); 
-   buttons[NUM_ROWS/2][NUM_COLS/2 + 1].setLabel("N"); 
-   buttons[NUM_ROWS/2][NUM_COLS/2 + 2].setLabel("!");
+  buttons[NUM_ROWS/2][NUM_COLS/2 - 5].setLabel("Y"); 
+  buttons[NUM_ROWS/2][NUM_COLS/2 - 4].setLabel("O"); 
+  buttons[NUM_ROWS/2][NUM_COLS/2 - 3].setLabel("U"); 
+  buttons[NUM_ROWS/2][NUM_COLS/2 - 1].setLabel("W"); 
+  buttons[NUM_ROWS/2][NUM_COLS/2].setLabel("I"); 
+  buttons[NUM_ROWS/2][NUM_COLS/2 + 1].setLabel("N"); 
+  buttons[NUM_ROWS/2][NUM_COLS/2 + 2].setLabel("!");
   //your code here
 }
 public boolean isValid(int r, int c)
@@ -121,14 +121,14 @@ public class MSButton
     }
     if (mines.contains(this)) {
       displayLosingMessage();
-    } else if (countMines(myRow,myCol)>0) {
+    } else if (countMines(myRow, myCol)>0) {
       flagged=true;
-      setLabel(countMines(myRow,myCol));
+      setLabel(countMines(myRow, myCol));
     } else {
-      for(int i=myRow-1;i<=myRow+1;i++)
-        for(int j=myCol-1;j<=myCol+1;j++)
+      for (int i=myRow-1; i<=myRow+1; i++)
+        for (int j=myCol-1; j<=myCol+1; j++)
           if (i!=myRow||j!=myCol) 
-            if (isValid(i,j)&&buttons[i][j].clicked==false) buttons[i][j].mousePressed();
+            if (isValid(i, j)&&buttons[i][j].clicked==false) buttons[i][j].mousePressed();
     }
 
     //your code here
@@ -160,5 +160,4 @@ public class MSButton
   {
     return flagged;
   }
-  
 }
